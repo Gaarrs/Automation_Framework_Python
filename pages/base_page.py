@@ -16,5 +16,15 @@ class BasePage:
         self.sub_button = page.locator("#subscribe")
         self.scroll_button = page.locator("#scrollUp")
 
-    def navigate(self):
-        self.page.goto("https://automationexercise.com/")
+    def navigate(self, url: str):
+        self.page.goto(url)
+
+    def open_cart(self):
+        self.cart_button.click()
+
+    def subscription(self, email: str):
+        self.sub_input.fill(email)
+        self.sub_button.click()
+
+    def scroll_up(self):
+        self.scroll_button.click()
