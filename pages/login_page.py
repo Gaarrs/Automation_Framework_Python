@@ -1,5 +1,5 @@
 from playwright.sync_api import Page, expect
-from base_page import BasePage
+from pages.base_page import BasePage
 
 class LoginPage(BasePage):
     def __init__(self, page):
@@ -8,8 +8,9 @@ class LoginPage(BasePage):
         self.login_password = page.locator('[data-qa="login-password"]')
         self.login_button = page.locator('[data-qa="login-button"]')
         self.signup_name = page.locator('[data-qa="signup-name"]')
-        self.signup_email = page.locator('[data-qa="signup-email"')
+        self.signup_email = page.locator('[data-qa="signup-email"]')
         self.signup_button = page.locator('[data-qa="signup-button"]')
+        self.signup_header = page.get_by_text("New User Signup!")
 
     def open(self):
         LoginPage.navigate(self, "https://automationexercise.com/login")
