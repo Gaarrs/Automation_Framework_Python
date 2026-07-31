@@ -11,6 +11,7 @@ class LoginPage(BasePage):
         self.signup_email_input = page.locator('[data-qa="signup-email"]')
         self.signup_button = page.locator('[data-qa="signup-button"]')
         self.signup_header = page.get_by_text("New User Signup!")
+        self.login_header = page.get_by_text("Login to your account")
 
     def open(self):
         LoginPage.navigate(self, "https://automationexercise.com/login")
