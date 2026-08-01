@@ -62,5 +62,18 @@ def test_user_login_correct(login_page, acc_deleted_page):
     with allure.step("Проверить, что отображается 'Account Deleted!'"):
         expect(acc_deleted_page.acc_deleted_header).to_be_visible()
 
+@allure.story('Authentication feature')
+@allure.title("Login User with incorrect email and password")
+def test_user_login_incorrect(login_page, acc_deleted_page):
+    with allure.step("Открыть домашнюю страницу"):
+        login_page.navigate("https://automationexercise.com/")
+    with allure.step("Нажать на ссылку Signup/Login"):
+        login_page.login_link.click()
+    with allure.step("Проверить, что отображается заголовок 'Login to your account'"):
+        expect(login_page.login_header).to_be_visible()
+    with allure.step("Попробовать залогиниться с некорректными данными"):
+        login_page.login("incorrect@email.ru", "password_incorrect")
+    with allure.step("Проверить, что отображается сообщение о некорректных данных для входа"):
+        expect(login_page.incorrect_alert).to_be_visible()
 
 
