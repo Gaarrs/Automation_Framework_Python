@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1447","Login User with incorrect email and password","tests","2026-08-02","passed","2026-08-02","","test_auth","",""
+"","3236","Register User","tests","2026-08-02","passed","2026-08-02","","test_auth","",""
+"","2395","Login User with correct email and password","tests","2026-08-02","passed","2026-08-02","","test_auth","",""
