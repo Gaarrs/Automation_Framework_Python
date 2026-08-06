@@ -44,6 +44,20 @@ def test_user_registration(login_page, signup_page, acc_created_page, acc_delete
     #     acc_deleted_page.continue_button.click()
 
 @allure.story('Authentication feature')
+@allure.title("Register User with existing email")
+def test_user_registration_existing(login_page, acc_created_page):
+    with allure.step("Открыть домашнюю страницу"):
+        login_page.navigate("https://automationexercise.com/")
+    with allure.step("Нажать на ссылку Signup/Login"):
+        login_page.login_link.click()
+    with allure.step("Проверить, что видно заголовок 'New User Signup!'"):
+        expect(login_page.signup_header).to_be_visible()
+    with allure.step("Ввести name и email и нажать Signup"):
+        login_page.signup(username, email)
+    with allure.step("Проверить, что отображается 'Email Address already exist!' "):
+        expect(login_page.exist_acc_alert).to_be_visible()
+
+@allure.story('Authentication feature')
 @allure.title("Logout User")
 def test_user_logout(login_page, page):
     with allure.step("Открыть домашнюю страницу"):

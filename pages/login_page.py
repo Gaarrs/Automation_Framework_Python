@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 from pages.base_page import BasePage
 
 class LoginPage(BasePage):
@@ -13,6 +13,7 @@ class LoginPage(BasePage):
         self.signup_header = page.get_by_text("New User Signup!")
         self.login_header = page.get_by_text("Login to your account")
         self.incorrect_alert = page.get_by_text("Your email or password is incorrect!")
+        self.exist_acc_alert = page.get_by_text("Email Address already exist!")
 
     def open(self):
         LoginPage.navigate(self, "https://automationexercise.com/login")

@@ -1,12 +1,28 @@
+from os import name
+
 from playwright.sync_api import Page
+import os
 from pages.base_page import BasePage
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(current_dir, "file.txt")
 
 class ContactPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
+        self.contact_header = page.get_by_text("Get In Touch")
         self.contact_name = page.locator("input[data-qa='name']")
         self.contact_email = page.locator("input[data-qa='email']")
         self.contact_subject = page.get_by_placeholder("Subject")
-        self.contact_message = page.get_by_id("message")
+        self.contact_message = page.locator("#message")
         self.submit = page.locator("input[data-qa='submit-button']")
-        self.upload = page.locator(".form-control")
+        self.upload = page.locator("[name='upload_file']")
+        self.success_alert = page.locator("#contact-page").get_by_text("Success! Your details have")
+        self.home_button = page.locator("span:text(' Home')")
+
+    def contact_form_fill(self, name, email, subject, message):
+        self.contact_name.fill(name)
+        self.contact_email.fill(email)
+        self.contact_subject.fill(subject)
+        self.contact_message.fill(message)
+        self.upload.set_input_files(file_path)

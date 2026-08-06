@@ -5,15 +5,15 @@ class BasePage:
         self.page = page
         self.url = page.url
         self.logo = page.get_by_alt_text("Website for automation practice")
-        self.home_link = page.locator('a[href="/"]')
-        self.products_link = page.locator('a[href="/products"]')
-        self.cart_link = page.locator('a[href="/view_cart"]')
-        self.login_link = page.locator('a[href="/login"]')
-        self.tests_link = page.locator('a[href="/test_cases"]')
-        self.api_link = page.locator('a[href="/api_list"]')
-        self.contact_link = page.locator('a[href="/contact_us"]')
-        self.logout_link = page.locator('a[href="/logout"]')
-        self.delete_acc_link = page.locator('a[href="/delete_account"]')
+        self.home_link = page.locator("a:text(' Home')")
+        self.products_link = page.locator("a:text(' Products')")
+        self.cart_link = page.locator("a:text(' Cart')")
+        self.login_link = page.locator("a:text(' Signup / Login')")
+        self.tests_link = page.locator("a:text(' Test Cases')")
+        self.api_link = page.locator("a:text(' API Testing')")
+        self.contact_link = page.locator("a:text(' Contact Us')")
+        self.logout_link = page.locator("a:text(' Logout')")
+        self.delete_acc_link = page.locator("a:text(' Delete Account')")
         self.logged_status = page.locator("a:text('Logged')")
         self.sub_input = page.get_by_placeholder("Your email address")
         self.sub_button = page.locator("#subscribe")
@@ -23,7 +23,7 @@ class BasePage:
         self.page.goto(url, timeout=60000)
 
     def open_cart(self):
-        self.cart_button.click()
+        self.cart_link.click()
 
     def subscription(self, email: str):
         self.sub_input.fill(email)
