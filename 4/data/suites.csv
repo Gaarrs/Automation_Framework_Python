@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2301","Logout User","tests","2026-08-06","passed","2026-08-06","","test_auth","",""
+"","1124","Verify Test Cases Page","tests","2026-08-06","passed","2026-08-06","","test_misc","",""
+"","7215","Contact Us Form","tests","2026-08-06","failed","2026-08-06","","test_misc","",""
+"","2029","Login User with correct email and password","tests","2026-08-06","passed","2026-08-06","","test_auth","",""
+"","1324","Login User with incorrect email and password","tests","2026-08-06","passed","2026-08-06","","test_auth","",""
+"","1495","Register User with existing email","tests","2026-08-06","passed","2026-08-06","","test_auth","",""
+"","2735","Register User","tests","2026-08-06","passed","2026-08-06","","test_auth","",""
