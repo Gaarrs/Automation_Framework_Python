@@ -15,7 +15,7 @@ def test_contact_us(base_page, contact_page, page):
     with allure.step("Нажать на кнопку 'Submit' и ответить 'ОК' в диалоговом окне"):
         page.on("dialog", lambda dialog: dialog.accept())
         contact_page.submit.click()
-    with allure.step("Проверить, что отображается алерт удачной отпарвки формы"):
+    with allure.step("Проверить, что отображается алерт удачной отправки формы"):
         expect(contact_page.success_alert).to_be_visible()
     with allure.step("Нажать на кнопку 'Home'"):
         contact_page.home_button.click()

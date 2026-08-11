@@ -1,5 +1,3 @@
-from os import name
-
 from playwright.sync_api import Page
 import os
 from pages.base_page import BasePage
@@ -21,8 +19,8 @@ class ContactPage(BasePage):
         self.home_button = page.locator("span:text(' Home')")
 
     def contact_form_fill(self, name, email, subject, message):
-        self.contact_name.fill(name)
-        self.contact_email.fill(email)
-        self.contact_subject.fill(subject)
-        self.contact_message.fill(message)
+        self.contact_name.press_sequentially(name, delay=20)
+        self.contact_email.press_sequentially(email, delay=20)
+        self.contact_subject.press_sequentially(subject, delay=20)
+        self.contact_message.press_sequentially(message, delay=20)
         self.upload.set_input_files(file_path)

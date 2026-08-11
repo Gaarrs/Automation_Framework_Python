@@ -1,4 +1,6 @@
 from playwright.sync_api import Page, expect
+from urllib3.util import timeout
+
 
 class BasePage:
     def __init__(self, page: Page):

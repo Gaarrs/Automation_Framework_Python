@@ -1,0 +1,16 @@
+.git
+.github
+.idea
+
+__pycache__
+.pytest_cache
+*.pyc
+
+.venv
+venv
+
+reports/*
+allure-results
+allure-report
+
+.env

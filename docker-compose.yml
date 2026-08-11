@@ -1,0 +1,22 @@
+services:
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: playwright-tests
+
+    volumes:
+      - ./reports:/app/reports
+
+    environment:
+      BASE_URL: ${BASE_URL:-https://automationexercise.com}
+      BROWSER: ${BROWSER:-chromium}
+      HEADLESS: ${HEADLESS:-true}
+
+    command:
+      - pytest
+      - -s
+      - -v
+      - --alluredir=reports
