@@ -1,10 +1,22 @@
 import pytest
+import playwright
+from playwright.sync_api import sync_playwright
+
 from pages.base_page import BasePage
 from pages.login_page import LoginPage
 from pages.contact_page import ContactPage
 from pages.signup_page import SignupPage
 from pages.acc_created_page import AccCreatedPage
 from pages.acc_deleted_page import AccDeletedPage
+
+@pytest.fixture()
+def api_request(scope = 'session'):
+    with sync_playwright() as p:
+        context = p.request.new_context(
+            base_url='https://automationexercise.com'
+        )
+        yield context
+        context.dispose()
 
 @pytest.fixture
 def base_page(page):
@@ -29,3 +41,4 @@ def acc_created_page(page):
 @pytest.fixture
 def acc_deleted_page(page):
     return AccDeletedPage(page)
+
