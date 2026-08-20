@@ -1,0 +1,14 @@
+# IDE
+.idea/
+*.iml
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Виртуальное окружение
+venv/
+env/
+.venv/
