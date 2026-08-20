@@ -19,7 +19,7 @@ class ContactPage(BasePage):
         self.home_button = page.locator("span:text(' Home')")
 
     def contact_form_fill(self, name, email, subject, message):
-        press_delay = 100
+        press_delay = 300
         self.contact_name.press_sequentially(name, delay=press_delay)
         self.contact_email.press_sequentially(email, delay=press_delay)
         self.contact_subject.press_sequentially(subject, delay=press_delay)
