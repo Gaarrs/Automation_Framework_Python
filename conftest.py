@@ -5,6 +5,8 @@ from playwright.sync_api import sync_playwright
 from pages.base_page import BasePage
 from pages.login_page import LoginPage
 from pages.contact_page import ContactPage
+from pages.product_details_page import ProductDetailsPage
+from pages.products_page import ProductsPage
 from pages.signup_page import SignupPage
 from pages.acc_created_page import AccCreatedPage
 from pages.acc_deleted_page import AccDeletedPage
@@ -41,4 +43,12 @@ def acc_created_page(page):
 @pytest.fixture
 def acc_deleted_page(page):
     return AccDeletedPage(page)
+
+@pytest.fixture
+def products_page(page):
+    return ProductsPage(page)
+
+@pytest.fixture
+def product_details_page(page):
+    return ProductDetailsPage(page)
 
