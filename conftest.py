@@ -10,6 +10,8 @@ from pages.products_page import ProductsPage
 from pages.signup_page import SignupPage
 from pages.acc_created_page import AccCreatedPage
 from pages.acc_deleted_page import AccDeletedPage
+from pages.view_cart_page import ViewCartPage
+
 
 @pytest.fixture()
 def api_request(scope = 'session'):
@@ -51,4 +53,8 @@ def products_page(page):
 @pytest.fixture
 def product_details_page(page):
     return ProductDetailsPage(page)
+
+@pytest.fixture
+def view_cart_page(page):
+    return ViewCartPage(page)
 
