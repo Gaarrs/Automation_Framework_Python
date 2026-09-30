@@ -51,3 +51,17 @@ def test_add_products_to_cart(products_page, view_cart_page, base_page, page):
         expect(view_cart_page.incart_products_list).to_have_count(2)
     with allure.step("Проверить соответствие цены, количества и общей цены"):
         view_cart_page.verify_price_quantity()
+
+@allure.story("Products")
+@allure.title("Search Product")
+def test_search_product(base_page, products_page, view_cart_page, page):
+    with allure.step("Открыть домашнюю страницу"):
+        base_page.navigate("https://automationexercise.com/")
+    with allure.step("Кликнуть на ссылку Products"):
+        base_page.products_link.click()
+    with allure.step("Проверить, что юзер оказался на странице Products"):
+        expect(page).to_have_url("https://automationexercise.com/products")
+    with allure.step("Ввести критерий поиска в поле Search и нажать на кнопку поиска"):
+        products_page.search("Jeans")
+    with allure.step("Проверить, что отображаются товары, удовлетворяющие критерию поиска"):
+        products_page.verify_search("Jeans")
