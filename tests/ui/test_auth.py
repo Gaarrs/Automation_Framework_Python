@@ -5,7 +5,7 @@ username = "Morty"
 email = "ops@mail.ru"
 password = "qwerty123"
 
-@allure.story('Authentication feature')
+@allure.story('Authentication tests')
 @allure.title("Register User")
 def test_user_registration(login_page, signup_page, acc_created_page, acc_deleted_page):
     with allure.step("Открыть домашнюю страницу"):

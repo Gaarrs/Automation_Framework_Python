@@ -1,10 +1,11 @@
 import allure
+import pytest
 from playwright.sync_api import Page, expect
 
 from pages.product_details_page import ProductDetailsPage
 
 
-@allure.story("Products")
+@allure.story("Shopping tests")
 @allure.title("Verify All Products and product detail page")
 def test_products_page_details(products_page, product_details_page, base_page, page):
     with allure.step("Открыть домашнюю страницу"):
@@ -32,7 +33,7 @@ def test_products_page_details(products_page, product_details_page, base_page, p
     with allure.step("Проверить, что отображаются brand"):
         expect(product_details_page.product_brand).to_be_visible()
 
-@allure.story("Products")
+@allure.story("Shopping tests")
 @allure.title("Add Products in Cart")
 def test_add_products_to_cart(products_page, view_cart_page, base_page, page):
     with allure.step("Открыть домашнюю страницу"):
@@ -52,7 +53,7 @@ def test_add_products_to_cart(products_page, view_cart_page, base_page, page):
     with allure.step("Проверить соответствие цены, количества и общей цены"):
         view_cart_page.verify_price_quantity()
 
-@allure.story("Products")
+@allure.story("Shopping tests")
 @allure.title("Search Product")
 def test_search_product(base_page, products_page, view_cart_page, page):
     with allure.step("Открыть домашнюю страницу"):
@@ -65,3 +66,24 @@ def test_search_product(base_page, products_page, view_cart_page, page):
         products_page.search("Jeans")
     with allure.step("Проверить, что отображаются товары, удовлетворяющие критерию поиска"):
         products_page.verify_search("Jeans")
+
+@allure.story("Shopping tests")
+@allure.title("Verify Product quantity in Cart")
+@pytest.mark.parametrize("quantity_set", ["2", "4"])
+def test_quantity(products_page, product_details_page, view_cart_page, base_page, page, quantity_set):
+    with allure.step("Открыть домашнюю страницу"):
+        base_page.navigate("https://automationexercise.com/")
+    with allure.step("Кликнуть на ссылку Products"):
+        base_page.products_link.click()
+    with allure.step("Кликнуть на кнопку View Product у любого продукта"):
+        products_page.products_details.first.click()
+    with allure.step("Проверить, что открылась страница деталей продукта"):
+        expect(page).to_have_url("https://automationexercise.com/product_details/1")
+    with allure.step(f"Изменить количество продукта на {quantity_set}"):
+        product_details_page.quantity_input.fill(quantity_set)
+    with allure.step("Нажать кнопку Add to cart"):
+        product_details_page.add_to_cart_button.click()
+    with allure.step("Нажать на кнопку View Cart"):
+        products_page.view_cart_link.click()
+    with allure.step(f"Проверить, что в корзине отображается указанное ранее количество {quantity_set}"):
+        expect(view_cart_page.incart_products_quantity).to_have_text(quantity_set)

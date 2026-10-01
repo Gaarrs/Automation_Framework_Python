@@ -9,3 +9,5 @@ class ProductDetailsPage(ProductsPage):
         self.product_availability = page.locator(".product-information b:text('Availability:')")
         self.product_condition = page.locator(".product-information b:text('Condition:')")
         self.product_brand = page.locator(".product-information b:text('Brand:')")
+        self.quantity_input = page.locator("#quantity")
+        self.add_to_cart_button = page.get_by_role("button", name="Add to cart")
