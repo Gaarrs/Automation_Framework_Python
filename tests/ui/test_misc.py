@@ -1,7 +1,9 @@
 import allure
 from playwright.sync_api import Page, expect
 
-@allure.story('Miscellaneous tests')
+allure_story = "Miscellaneous tests"
+
+@allure.story(allure_story)
 @allure.title("Contact Us Form")
 def test_contact_us(base_page, contact_page, page):
     with allure.step("Открыть домашнюю страницу"):
@@ -22,7 +24,7 @@ def test_contact_us(base_page, contact_page, page):
     with allure.step("Проверить, что открылась домашняя страница"):
         expect(page).to_have_url("https://automationexercise.com/")
 
-@allure.story('Miscellaneous tests')
+@allure.story(allure_story)
 @allure.title("Verify Test Cases Page")
 def test_verify_tests_page(base_page, page):
     with allure.step("Открыть домашнюю страницу"):
@@ -32,7 +34,7 @@ def test_verify_tests_page(base_page, page):
     with allure.step("Проверить, что отобразилась страница с тестами"):
         expect(page).to_have_url("https://automationexercise.com/test_cases")
 
-@allure.story('Miscellaneous tests')
+@allure.story(allure_story)
 @allure.title("Verify Subscription in home page")
 def test_subscription(base_page, page):
     with allure.step("Открыть домашнюю страницу"):

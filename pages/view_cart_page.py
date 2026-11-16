@@ -7,6 +7,7 @@ class ViewCartPage(BasePage):
         self.incart_products_price_list = page.locator(".cart_price p")
         self.incart_products_total_list = page.locator(".cart_total_price")
         self.incart_products_quantity = page.locator(".cart_quantity button")
+        self.delete_button_list = page.locator(".cart_quantity_delete")
 
     def verify_price_quantity(self):
         count = self.incart_products_list.count() - 1

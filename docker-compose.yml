@@ -9,6 +9,7 @@ services:
 
     volumes:
       - ./reports:/app/reports
+      - ./test-results:/app/test-results
 
     environment:
       BASE_URL: ${BASE_URL:-https://automationexercise.com}
@@ -20,3 +21,6 @@ services:
       - -s
       - -v
       - --alluredir=reports
+      - --tracing=retain-on-failure
+      - --screenshot=only-on-failure
+      - --video=retain-on-failure

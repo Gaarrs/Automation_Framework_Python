@@ -5,7 +5,9 @@ username = "Morty"
 email = "ops@mail.ru"
 password = "qwerty123"
 
-@allure.story('Authentication tests')
+allure_story = "Authentication tests"
+
+@allure.story(allure_story)
 @allure.title("Register User")
 def test_user_registration(login_page, signup_page, acc_created_page, acc_deleted_page):
     with allure.step("Открыть домашнюю страницу"):
@@ -42,7 +44,7 @@ def test_user_registration(login_page, signup_page, acc_created_page, acc_delete
     # with allure.step("Нажать на кнопку 'Continue'"):
     #     acc_deleted_page.continue_button.click()
 
-@allure.story('Authentication feature')
+@allure.story(allure_story)
 @allure.title("Register User with existing email")
 def test_user_registration_existing(login_page, acc_created_page):
     with allure.step("Открыть домашнюю страницу"):
@@ -56,7 +58,7 @@ def test_user_registration_existing(login_page, acc_created_page):
     with allure.step("Проверить, что отображается 'Email Address already exist!' "):
         expect(login_page.exist_acc_alert).to_be_visible()
 
-@allure.story('Authentication feature')
+@allure.story(allure_story)
 @allure.title("Logout User")
 def test_user_logout(login_page, page):
     with allure.step("Открыть домашнюю страницу"):
@@ -75,7 +77,7 @@ def test_user_logout(login_page, page):
     with allure.step("Проверить, что пользователя вернуло на Login Page"):
         expect(page).to_have_url("https://automationexercise.com/login")
 
-@allure.story('Authentication feature')
+@allure.story(allure_story)
 @allure.title("Login User with correct email and password")
 def test_user_login_correct(login_page, acc_deleted_page):
     with allure.step("Открыть домашнюю страницу"):
@@ -94,7 +96,7 @@ def test_user_login_correct(login_page, acc_deleted_page):
     with allure.step("Проверить, что отображается 'Account Deleted!'"):
         expect(acc_deleted_page.acc_deleted_header).to_be_visible()
 
-@allure.story('Authentication feature')
+@allure.story(allure_story)
 @allure.title("Login User with incorrect email and password")
 def test_user_login_incorrect(login_page, acc_deleted_page):
     with allure.step("Открыть домашнюю страницу"):
