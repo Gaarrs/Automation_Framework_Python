@@ -1,4 +1,4 @@
-playwright
+playwright==1.65.2
 pytest-playwright
 pytest
 allure-pytest

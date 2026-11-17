@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/playwright/python:v1.63.0-noble
+FROM mcr.microsoft.com/playwright/python:v1.65.2-noble
+
 
 # Настройка рабочего каталога внутри контейнера
 WORKDIR /app
