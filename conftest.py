@@ -14,7 +14,7 @@ from pages.view_cart_page import ViewCartPage
 
 
 @pytest.fixture()
-def api_request(scope = 'session'):
+def api_request():
     with sync_playwright() as p:
         context = p.request.new_context(
             base_url='https://automationexercise.com'
